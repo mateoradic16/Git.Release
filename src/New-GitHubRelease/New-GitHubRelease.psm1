@@ -245,6 +245,7 @@ function New-GitHubRelease
 function Send-FilesToGitHubRelease([string[]] $filePathsToUpload, [string] $urlToUploadFilesTo, $authHeader)
 {
 	[int] $numberOfFilesToUpload = $filePathsToUpload.Count
+	[float] $percentDone
 	[int] $numberOfFilesUploaded = 0
 	$filePathsToUpload | ForEach-Object `
 	{
@@ -264,6 +265,8 @@ function Send-FilesToGitHubRelease([string[]] $filePathsToUpload, [string] $urlT
 		$numberOfFilesUploaded = $numberOfFilesUploaded + 1
 		Write-Verbose "Uploading asset $numberOfFilesUploaded of $numberOfFilesToUpload, '$filePath'."
 		Invoke-RestMethodAndThrowDescriptiveErrorOnFailure $uploadAssetWebRequestParameters > $null
+
+		Write-Output "Uploading asset $numberOfFilesUploaded of $numberOfFilesToUpload!"
 	}
 }
 
