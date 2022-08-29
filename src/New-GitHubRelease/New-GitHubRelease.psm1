@@ -245,7 +245,6 @@ function New-GitHubRelease
 function Send-FilesToGitHubRelease([string[]] $filePathsToUpload, [string] $urlToUploadFilesTo, $authHeader)
 {
 	[int] $numberOfFilesToUpload = $filePathsToUpload.Count
-	[float] $percentDone
 	[int] $numberOfFilesUploaded = 0
 	$filePathsToUpload | ForEach-Object `
 	{

@@ -10,7 +10,7 @@ $newGitHubReleaseParameters =
 @{
     GitHubUsername = 'mateoradic16'
     GitHubRepositoryName = 'ForexTradingUI'
-    GitHubAccessToken = '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'
+    GitHubAccessToken = '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'
     ReleaseName = "ForexTradingUI.Release.v$($version)"
     TagName = "v$($version)"
     ReleaseNotes = "This is an automatic Release triggered by Release build!"
