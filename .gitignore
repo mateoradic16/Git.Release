@@ -16,4 +16,5 @@ _[Rr]e[Ss]harper.*
 *.nupkg
 AppPackages/
 
-config/*
+config/
+config/config.json
