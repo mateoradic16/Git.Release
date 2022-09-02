@@ -1,8 +1,8 @@
 {
     "GitHub": {
-        "Username": "",
-        "RepositoryName": "",
-        "AccessToken": "",
+        "Username": "mateoradic16",
+        "RepositoryName": "ForexTradingUI",
+        "AccessToken": "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",
         "ReleaseNotes": "This is an automatic Release triggered by Release build!"
     }
 }
