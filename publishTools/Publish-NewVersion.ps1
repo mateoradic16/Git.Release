@@ -1,6 +1,8 @@
-param ($version, $assetFiles, $releaseModule)
+param ($version, $assetFiles, $releaseModule, $configFile)
 Import-Module -Name $releaseModule -Scope Local
+$JsonConfig = Get-Content $configFile | ConvertFrom-Json
 
+Write-Output $JsonConfig
 # Specify the parameters required to create the release. Do it as a hash table for easier readability.
 $array = Get-ChildItem -Path $assetFiles -Recurse | Select-Object -ExpandProperty FullName
 Write-Output "Uploading Release to GitHub... v$($version)"
@@ -8,12 +10,12 @@ Write-Output "Files:"
 Write-Output $array
 $newGitHubReleaseParameters =
 @{
-    GitHubUsername = 'mateoradic16'
-    GitHubRepositoryName = 'ForexTradingUI'
-    GitHubAccessToken = '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'
-    ReleaseName = "ForexTradingUI.Release.v$($version)"
+    GitHubUsername = $JsonConfig.GitHub.Username
+    GitHubRepositoryName = $JsonConfig.GitHub.RepositoryName
+    GitHubAccessToken = $JsonConfig.GitHub.AccessToken
+    ReleaseName = $JsonConfig.GitHub.RepositoryName + ".Release.v$($version)"
     TagName = "v$($version)"
-    ReleaseNotes = "This is an automatic Release triggered by Release build!"
+    ReleaseNotes = $JsonConfig.GitHub.ReleaseNotes
     AssetFilePaths = @($array)
     IsPreRelease = $false
     IsDraft = $false	# Set to true when testing so we don't publish a real release (visible to everyone) by accident.
