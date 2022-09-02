@@ -15,3 +15,5 @@ _[Rr]e[Ss]harper.*
 *.backup
 *.nupkg
 AppPackages/
+
+config/*
